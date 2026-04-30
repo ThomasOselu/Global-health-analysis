@@ -1,0 +1,85 @@
+# Global Health Analytics — Project Configuration
+
+project:
+  name: "Global Health Status Analytics"
+  version: "1.0.0"
+  description: "Comprehensive analysis of WHO global health indicators 2000-2025"
+  author: "Data Analytics Portfolio"
+  date: "2025"
+
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  reports_dir: "reports"
+  figures_dir: "reports/figures"
+
+  sources:
+    who_gho_base_url: "https://ghoapi.azureedge.net/api"
+    world_health_stats: "https://www.who.int/data/gho"
+
+  indicators:
+    life_expectancy: "WHOSIS_000001"
+    healthy_life_expectancy: "WHOSIS_000007"
+    maternal_mortality: "MDG_0000000026"
+    under5_mortality: "MDG_0000000007"
+    tb_incidence: "MDG_0000000020"
+    hiv_incidence: "MDG_0000000023"
+    uhc_index: "UHC_INDEX_REPORTED"
+    immunization_dtp3: "WHS4_100"
+    ncd_premature_mortality: "NCD_MORT_30TO70_CAUSE"
+
+  regions:
+    - code: "AFR"
+      name: "African Region"
+    - code: "AMR"
+      name: "Region of the Americas"
+    - code: "SEAR"
+      name: "South-East Asia Region"
+    - code: "EUR"
+      name: "European Region"
+    - code: "EMR"
+      name: "Eastern Mediterranean Region"
+    - code: "WPR"
+      name: "Western Pacific Region"
+
+analysis:
+  start_year: 2000
+  end_year: 2025
+  baseline_year: 2018          # WHO Triple Billion baseline
+  sdg_target_year: 2030
+
+  statistical_tests:
+    significance_level: 0.05
+    confidence_interval: 0.95
+    bootstrap_iterations: 1000
+
+visualization:
+  theme: "healthcare"
+  color_palette:
+    primary: "#0A4E6B"
+    secondary: "#2196A6"
+    accent: "#E8A020"
+    danger: "#C0392B"
+    success: "#27AE60"
+    neutral: "#7F8C8D"
+    regions:
+      AFR: "#E74C3C"
+      AMR: "#3498DB"
+      SEAR: "#2ECC71"
+      EUR: "#9B59B6"
+      EMR: "#F39C12"
+      WPR: "#1ABC9C"
+  figure_size: [12, 7]
+  dpi: 150
+  font_family: "DejaVu Sans"
+
+reporting:
+  output_format: ["html", "pdf", "json"]
+  include_raw_data: false
+  executive_summary: true
+  auto_insights: true
+
+logging:
+  level: "INFO"
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level} | {name} | {message}"
+  rotation: "10 MB"
